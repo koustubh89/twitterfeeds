@@ -27,14 +27,14 @@
         <div class="col-xs-3"></div>
         <div class="col-xs-3">
             <span class="btn" ng-class="{'btn-primary':selectedLink == 'feed'}" ng-click="change('feed')" >
-                <a ng-href="/#/feeds">
+                <a ng-href="{{location}}/#/feeds">
                     Feeds
                 </a>
             </span>
         </div>
         <div class="col-xs-3">
             <span class="btn" ng-class="{'btn-primary':selectedLink == 'hash'}" ng-click="change('hash')" >
-                <a ng-href="/#/custserv">
+                <a ng-href="{{location}}/#/custserv">
                     Hash
                 </a>
             </span>

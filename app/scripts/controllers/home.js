@@ -10,4 +10,6 @@ angular.module('twitterapp')
         $rootScope.selectedLink = param;
     };
 
+    $scope.location = window.location.href;
+    $scope.location = $scope.location.split('/#')[0];
 });
