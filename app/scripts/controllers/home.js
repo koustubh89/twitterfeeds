@@ -1,7 +1,7 @@
 'use strict';
 angular.module('twitterapp')
 
-.controller('home',function( $scope, $rootScope, $route ){
+.controller('home',function( $scope, $rootScope){
     
     console.log('home');
     if(window.location.href.split('#')[1] =='/feeds'){
@@ -13,7 +13,6 @@ angular.module('twitterapp')
 
     $scope.change = function(param){
         $rootScope.selectedLink = param;
-        $route.reload();
     };
 
     $scope.location = window.location.href;
