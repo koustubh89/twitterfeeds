@@ -1,9 +1,11 @@
 'use strict';
 angular.module('twitterapp')
 
-.controller('hashtags',function( $scope ){
+.controller('hashtags',function( $scope, $route){
     console.log('hashtags');
-    !function(d,s,id){
+    //$route.reload();
+    $scope.hash = function(d,s,id){
+        console.log('fired hash');
         var js,
         fjs=d.getElementsByTagName(s)[0],
         p=/^http:/.test(d.location)?'http':'https';
@@ -14,6 +16,7 @@ angular.module('twitterapp')
             js.src=p+"://platform.twitter.com/widgets.js";
             fjs.parentNode.insertBefore(js,fjs);
         }
-    }(document,"script","twitter-wjs");
+    }//(document,"script","twitter-wjs");
 
+    $scope.hash(document,"script","twitter-wjs");
 });
