@@ -3,12 +3,12 @@ angular.module('twitterapp')
 
 .controller('home',function( $scope, $rootScope){
     
-    console.log('home');
-    if(window.location.href.split('#')[1] =='/feeds'){
-    	$rootScope.selectedLink = 'feed';
+    console.log('home', window.location.href.split('#'));
+    if(window.location.href.split('#')[1] =='/custserv'){
+    	$rootScope.selectedLink = 'hash';
     }
     else{
-		$rootScope.selectedLink = 'hash';
+		$rootScope.selectedLink = 'feed';
 	}
 
     $scope.change = function(param){

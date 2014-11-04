@@ -15,19 +15,24 @@ angular.module("twitterapp", [ "ngRoute" ]).config([ "$routeProvider", function(
 
 angular.module("twitterapp").controller("home", function($scope, $rootScope) {
     console.log("home");
-    $rootScope.selectedLink = "feed";
+    if (window.location.href.split("#")[1] == "/feeds") {
+        $rootScope.selectedLink = "feed";
+    } else {
+        $rootScope.selectedLink = "hash";
+    }
     $scope.change = function(param) {
         $rootScope.selectedLink = param;
     };
     $scope.location = window.location.href;
-    $scope.location = $scope.location.split("/#")[0];
+    $scope.location = $scope.location.split("/#/")[0];
 });
 
 "use strict";
 
-angular.module("twitterapp").controller("myfeeds", function($scope) {
+angular.module("twitterapp").controller("myfeeds", function($scope, $route) {
     console.log("hi");
-    !function(d, s, id) {
+    $scope.feeds = function(d, s, id) {
+        console.log("fired feeds");
         var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? "http" : "https";
         if (!d.getElementById(id)) {
             js = d.createElement(s);
@@ -35,14 +40,16 @@ angular.module("twitterapp").controller("myfeeds", function($scope) {
             js.src = p + "://platform.twitter.com/widgets.js";
             fjs.parentNode.insertBefore(js, fjs);
         }
-    }(document, "script", "twitter-wjs");
+    };
+    $scope.feeds(document, "script", "twitter-wjs");
 });
 
 "use strict";
 
-angular.module("twitterapp").controller("hashtags", function($scope) {
+angular.module("twitterapp").controller("hashtags", function($scope, $route) {
     console.log("hashtags");
-    !function(d, s, id) {
+    $scope.hash = function(d, s, id) {
+        console.log("fired hash");
         var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? "http" : "https";
         if (!d.getElementById(id)) {
             js = d.createElement(s);
@@ -50,5 +57,6 @@ angular.module("twitterapp").controller("hashtags", function($scope) {
             js.src = p + "://platform.twitter.com/widgets.js";
             fjs.parentNode.insertBefore(js, fjs);
         }
-    }(document, "script", "twitter-wjs");
+    };
+    $scope.hash(document, "script", "twitter-wjs");
 });
